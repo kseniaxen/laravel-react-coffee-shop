@@ -6,19 +6,12 @@ import Main from './views/Main';
 import User from './views/User';
 
 import AuthLayout from './components/AuthLayout';
-import MainLayout from './components/MainLayout';
 import UserLayout from './components/UserLayout';
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <MainLayout />,
-        children: [
-            {
-                index: true,
-                element: <Main />
-            }
-        ]
+        element: <Main />,
     },
     {
         path: '/user',

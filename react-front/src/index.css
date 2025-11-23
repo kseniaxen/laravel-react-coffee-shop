@@ -1,0 +1,205 @@
+@font-face {
+    font-family: "Outfit";
+    src: url("./assets/fonts/Outfit-VariableFont_wght.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Playfair Display";
+    src: url("./assets/fonts/PlayfairDisplay-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins-Medium.ttf') format('truetype');
+    font-weight: 300;
+}
+
+body {
+    font-family: "Outfit", sans-serif !important;
+    background-color: #F1F0EE !important;
+}
+
+.font-playfair {
+    font-family: "Playfair Display", sans-serif !important;
+}
+
+.font-poppins {
+    font-family: "Poppins", sans-serif !important;
+}
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    background-image: url("./assets/img/banner.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+}
+
+.coffee-type {
+    background-color: #E2D9C8;
+    color: #544A3E;
+}
+
+.special-coffee h2 {
+    color: #30261C;
+}
+
+.custom-carousel .carousel-control-prev,
+.custom-carousel .carousel-control-next {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    color:transparent;
+}
+
+
+.custom-carousel .carousel-control-prev {
+    left: -50px;
+    opacity: 1 !important;
+}
+
+.custom-carousel .carousel-control-next {
+    right: -50px;
+    opacity: 1 !important;
+}
+
+.custom-carousel .carousel-control-prev-icon,
+.custom-carousel .carousel-control-next-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.custom-carousel .carousel-control-prev:hover,
+.custom-carousel .carousel-control-next:hover {
+    opacity: 1 !important;
+    background: transparent !important;
+}
+
+@media (max-width: 768px) {
+    .custom-carousel .carousel-control-prev {
+        left: -10px;
+    }
+
+    .custom-carousel .carousel-control-next {
+        right: -10px;
+    }
+
+    .custom-carousel .carousel-control-prev-icon,
+    .custom-carousel .carousel-control-next-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .custom-carousel .carousel-control-prev {
+        left: -15px;
+    }
+
+    .custom-carousel .carousel-control-next {
+        right: -15px;
+    }
+
+    .custom-carousel .carousel-control-prev,
+    .custom-carousel .carousel-control-next {
+        width: 50px;
+    }
+
+    .custom-carousel .carousel-control-prev-icon,
+    .custom-carousel .carousel-control-next-icon {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.banner-explore {
+    width: 100%;
+    height: 35vh;
+    background-image: url("./assets/img/banner_coffee.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 992px) {
+    .banner-explore {
+        height: 30vh;
+    }
+}
+
+.arrow-circle {
+    color: black;
+    background-color: #E2D9C8;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 480px) {
+    .arrow-circle {
+        background-color: transparent !important;
+    }
+}
+
+.carousel-indicators {
+    bottom: -50px !important;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: #6C6457 !important;
+}
+
+.carousel-indicators [data-bs-target] {
+    opacity: 1;
+    background-color: #30261C !important;
+}
+
+.subscribe {
+    width: 100%;
+    height: 35vh;
+    background-image: url("./assets/img/banner_subscribe.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 992px) {
+    .subscribe {
+        height: 30vh;
+    }
+}
+
+.round-input {
+    border-radius: 50px !important;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    outline: none;
+    box-shadow: none;
+}
+
+.round-input:focus,
+.round-input:active {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.footer {
+    background-color: #30261C;
+}
