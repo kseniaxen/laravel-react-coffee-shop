@@ -12,7 +12,7 @@ export default function Login() {
     return (
         <Form onSubmit={onSubmit}>
             <Container>
-                <Row className="d-flex flex-column text-center pt-lg-0 pt-3">
+                <Row className="d-flex flex-column text-center pt-lg-0 mt-3">
                     <Col><h2 className="font-playfair">coffee</h2></Col>
                     <Col><p>Welcome Back, Please login to your account</p></Col>
                 </Row>
@@ -62,7 +62,7 @@ export default function Login() {
                     </Col>
                 </Row>
             </Container>
-            <Container className="mt-5">
+            <Container className="mt-2">
                 <Row>
                     <Col>
                         <p className="text-center">
