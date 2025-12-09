@@ -1,5 +1,6 @@
 import { Outlet, Navigate } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProviders";
+import NavigationLayout from "./NavigationLayout";
 
 export default function UserLayout() {
     const {token} = useStateContext()
@@ -8,6 +9,7 @@ export default function UserLayout() {
     }
     return(
         <div>
+            <NavigationLayout />
             <Outlet />
         </div>
     )

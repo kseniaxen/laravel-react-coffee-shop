@@ -1,14 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import axiosClient from "../axios-client";
+import { useStateContext } from "../contexts/ContextProviders";
 
 export default function NavigationLayout({ variant = "dark", textColor = "white" }) {
     const [expanded, setExpanded] = useState(false);
+
+    const { user, token, setUser, setToken } = useStateContext();
+
+    const onLogout = (ev) => {
+        ev.preventDefault();
+        axiosClient.post('/logout')
+            .then(() => {
+                setUser({});
+                setToken(null);
+            })
+    }
+
     return (
-        <Navbar 
-            expand="lg" 
-            variant={variant} 
-            className="position-absolute w-100" 
+        <Navbar
+            expand="lg"
+            variant={variant}
+            className="position-absolute w-100"
             expanded={expanded}
             onToggle={() => setExpanded(prev => !prev)}
         >
@@ -17,45 +31,63 @@ export default function NavigationLayout({ variant = "dark", textColor = "white"
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="side-collapse">
                     <Nav className="mx-auto">
-                        <Nav.Link 
-                            as={Link} 
-                            to="/" 
+                        <Nav.Link
+                            as={Link}
+                            to="/"
                             className="text-uppercase my-2"
                             style={{ color: textColor }}
                             onClick={() => setExpanded(false)}>
                             home
                         </Nav.Link>
-                        <Nav.Link 
-                            as={Link} 
-                            to="/coffee" 
+                        <Nav.Link
+                            as={Link}
+                            to="/coffee"
                             className="text-uppercase my-2"
                             style={{ color: textColor }}
                             onClick={() => setExpanded(false)}>
                             coffee
                         </Nav.Link>
-                        <Nav.Link 
-                            as={Link} 
-                            to="/bakery" 
+                        <Nav.Link
+                            as={Link}
+                            to="/bakery"
                             className="text-uppercase my-2"
                             style={{ color: textColor }}
                             onClick={() => setExpanded(false)}>
                             bakery
                         </Nav.Link>
-                        <Nav.Link 
-                            as={Link} 
-                            to="/about" 
+                        <Nav.Link
+                            as={Link}
+                            to="/about"
                             className="text-uppercase my-2"
                             style={{ color: textColor }}
                             onClick={() => setExpanded(false)}>
                             about
                         </Nav.Link>
-                        <Nav.Link 
-                            as={Link} 
-                            to="/auth/login" 
+                        {
+                            !token ?
+                                <Nav.Link
+                                    as={Link}
+                                    to="/auth/login"
+                                    className="text-uppercase my-2"
+                                    style={{ color: textColor }}
+                                    onClick={() => setExpanded(false)}>
+                                    login
+                                </Nav.Link>
+                                :
+                                <Nav.Link
+                                    className="text-uppercase my-2"
+                                    style={{ color: textColor }}
+                                    onClick={(ev) => onLogout(ev)}>
+                                    logout
+                                </Nav.Link>
+                        }
+                        <Nav.Link
+                            as={Link}
+                            to="/user"
                             className="text-uppercase my-2"
                             style={{ color: textColor }}
                             onClick={() => setExpanded(false)}>
-                            login
+                            {user.name}
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

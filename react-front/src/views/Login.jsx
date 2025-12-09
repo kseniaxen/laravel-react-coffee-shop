@@ -1,12 +1,42 @@
-import { useState } from "react";
-import { Container, Form, Row, Col, InputGroup, Button } from "react-bootstrap";
+import { useState, useRef } from "react";
+import { Container, Form, Row, Col, InputGroup, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axiosClient from "../axios-client";
+import { useStateContext } from "../contexts/ContextProviders";
 
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
 
-    const onSubmit = () => {
+    const emailRef = useRef();
+    const passwordRef = useRef();
 
+    const { setUser, setToken } = useStateContext();
+    const [errors, setErrors] = useState(null);
+
+    const onSubmit = (ev) => {
+        ev.preventDefault();
+        const payload = {
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
+        }
+        setErrors(null);
+        axiosClient.post('/login', payload)
+            .then(({ data }) => {
+                setUser(data.user)
+                setToken(data.token)
+            })
+            .catch(err => {
+                const response = err.response;
+                if (response && response.status === 422) {
+                    if(response.data.errors) {
+                        setErrors(response.data.errors)
+                    } else {
+                        setErrors({
+                            email : [response.data.message]
+                        })
+                    }
+                }
+            })
     }
 
     return (
@@ -18,14 +48,25 @@ export default function Login() {
                 </Row>
                 <Row className="d-flex align-items-center flex-column text-center">
                     <Col md={8} xs={12}>
+                        {errors && (
+                            <Alert variant="danger">
+                                {Object.keys(errors).map(key => (
+                                    <p key={key} className="m-0 p-0">{errors[key][0]}</p>
+                                ))}
+                            </Alert>
+                        )}
+                    </Col>
+                </Row>
+                <Row className="d-flex align-items-center flex-column text-center">
+                    <Col md={8} xs={12}>
                         <Form.Group className="mb-3 p-0">
                             <Form.Control
+                                ref={emailRef}
                                 type="email"
                                 id="email"
                                 placeholder="Email"
                                 className="placeholder-white p-3"
                                 style={{ backgroundColor: "#504848", color: "white", border: "none", borderRadius: "0px" }}
-                                required
                             />
                         </Form.Group>
                     </Col>
@@ -33,18 +74,18 @@ export default function Login() {
                         <Form.Group className="mb-3 p-0">
                             <InputGroup>
                                 <Form.Control
+                                    ref={passwordRef}
                                     type={showPassword ? "text" : "password"}
                                     id="password"
                                     placeholder="Password"
                                     className="placeholder-white p-3"
                                     style={{ backgroundColor: "#504848", color: "white", border: "none", borderRadius: "0px" }}
-                                    required
                                 />
                                 <Button
                                     variant="light"
                                     onClick={() => setShowPassword(!showPassword)}
                                 >
-                                    {showPassword ? <i class="bi bi-eye-slash"></i> : <i class="bi bi-eye"></i>}
+                                    {showPassword ? <i className="bi bi-eye-slash"></i> : <i className="bi bi-eye"></i>}
                                 </Button>
                             </InputGroup>
                         </Form.Group>
@@ -67,7 +108,7 @@ export default function Login() {
                     <Col>
                         <p className="text-center">
                             Don't have an account?{' '}
-                            <Link to="/auth/signup" 
+                            <Link to="/auth/signup"
                                 className="text-decoration-none fw-bold link-white">
                                 Sign up
                             </Link>
