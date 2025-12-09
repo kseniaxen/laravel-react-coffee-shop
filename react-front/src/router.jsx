@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         element: <UserLayout />,
         children: [
             {
-                path: 'info',
+                index: true,
                 element: <User />
             },
         ]

@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axiosClient from "../axios-client";
 import { useStateContext } from "../contexts/ContextProviders";
 
-export default function NavigationLayout({ variant = "dark", textColor = "white" }) {
+export default function NavigationLayout({ variant = "dark", textColor = "white", absolute = true }) {
     const [expanded, setExpanded] = useState(false);
 
     const { user, token, setUser, setToken } = useStateContext();
@@ -22,7 +22,7 @@ export default function NavigationLayout({ variant = "dark", textColor = "white"
         <Navbar
             expand="lg"
             variant={variant}
-            className="position-absolute w-100"
+            className={`w-100 ${absolute ? "position-absolute" : ""}`}
             expanded={expanded}
             onToggle={() => setExpanded(prev => !prev)}
         >

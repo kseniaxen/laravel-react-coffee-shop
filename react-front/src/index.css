@@ -18,6 +18,21 @@
     font-weight: 300;
 }
 
+html, body, #root {
+    height: 100%;
+    margin: 0;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
 body {
     font-family: "Outfit", sans-serif !important;
     background-color: #F1F0EE !important;
