@@ -4,9 +4,11 @@ import Signup from './views/Signup';
 import NotFound from './views/NotFound';
 import Main from './views/Main';
 import User from './views/User';
+import Menu from './views/Menu';
 
 import AuthLayout from './components/AuthLayout';
 import UserLayout from './components/UserLayout';
+import MenuLayout from './components/MenuLayout';
 
 const router = createBrowserRouter([
     {
@@ -21,6 +23,20 @@ const router = createBrowserRouter([
                 index: true,
                 element: <User />
             },
+        ]
+    },
+    {
+        path: '/menu',
+        element: <MenuLayout />,
+        children: [
+            {
+                path: ':category',
+                element: <Menu />
+            },
+            {
+                index: true,
+                element: <Navigate to="coffee" replace />
+            }
         ]
     },
     {

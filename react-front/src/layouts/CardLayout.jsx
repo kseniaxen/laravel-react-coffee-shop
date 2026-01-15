@@ -1,8 +1,8 @@
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Row, Col } from "react-bootstrap";
 
 import CoffeeTmp from "../assets/img/coffee_tmp.jpg";
 
-export default function CardLayout() {
+export default function CardLayout({ name = "Temp", text = "Temp", size_product = 100, size_name = "ml", dimensions, price = 10.2 }) {
     return (
         <Card
             style={{
@@ -39,10 +39,18 @@ export default function CardLayout() {
 
             <Card.Body className="p-0 pt-3">
                 <Card.Title className="fs-3 fw-bold" style={{ color: "#30261C" }}>
-                    Lungo coffee
+                    {name}
                 </Card.Title>
                 <Card.Text style={{ color: "#2A0000" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    <p className="m-0">{text}</p>
+                    <Row className="justify-content-between align-items-center">
+                        <Col>
+                            <p className="m-0 fw-bold">{price} $</p>
+                        </Col>
+                        <Col className="d-flex justify-content-end">
+                            <p className="m-0">{size_name} {size_product} {dimensions}</p>
+                        </Col>
+                    </Row>
                 </Card.Text>
                 <Button
                     style={{

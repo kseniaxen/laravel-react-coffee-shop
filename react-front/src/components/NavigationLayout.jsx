@@ -22,7 +22,7 @@ export default function NavigationLayout({ variant = "dark", textColor = "white"
         <Navbar
             expand="lg"
             variant={variant}
-            className={`w-100 ${absolute ? "position-absolute" : ""}`}
+            className={`w-100 ${absolute ? "position-absolute" : "position-relative"}`}
             expanded={expanded}
             onToggle={() => setExpanded(prev => !prev)}
         >
@@ -41,7 +41,7 @@ export default function NavigationLayout({ variant = "dark", textColor = "white"
                         </Nav.Link>
                         <Nav.Link
                             as={Link}
-                            to="/coffee"
+                            to="/menu/coffee"
                             className="text-uppercase my-2"
                             style={{ color: textColor }}
                             onClick={() => setExpanded(false)}>
@@ -49,7 +49,7 @@ export default function NavigationLayout({ variant = "dark", textColor = "white"
                         </Nav.Link>
                         <Nav.Link
                             as={Link}
-                            to="/bakery"
+                            to="/menu/bakery"
                             className="text-uppercase my-2"
                             style={{ color: textColor }}
                             onClick={() => setExpanded(false)}>
