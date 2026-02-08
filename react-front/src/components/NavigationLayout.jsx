@@ -49,11 +49,11 @@ export default function NavigationLayout({ variant = "dark", textColor = "white"
                         </Nav.Link>
                         <Nav.Link
                             as={Link}
-                            to="/menu/bakery"
+                            to="/menu/dessert"
                             className="text-uppercase my-2"
                             style={{ color: textColor }}
                             onClick={() => setExpanded(false)}>
-                            bakery
+                            dessert
                         </Nav.Link>
                         <Nav.Link
                             as={Link}

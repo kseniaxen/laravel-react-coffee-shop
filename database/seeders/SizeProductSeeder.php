@@ -25,6 +25,11 @@ class SizeProductSeeder extends Seeder
                 'name' => 'Large',
                 'dimensions' => 'ml',
                 'size' => 500
+            ],
+            [
+                'name' => '',
+                'dimensions' => 'g',
+                'size' => 300
             ]
         ]);
     }

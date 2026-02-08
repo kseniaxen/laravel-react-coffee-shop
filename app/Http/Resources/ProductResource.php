@@ -13,6 +13,9 @@ class ProductResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'price' => $this->base_price,
+            'category' => [
+                'name' => $this->category->name ?? null,
+            ],
             'size' => [
                 'name' => $this->size->name ?? null,
                 'size_product' => $this->size->size ?? null,
@@ -20,6 +23,7 @@ class ProductResource extends JsonResource
             ],
             'image' => $this->image,
             'available' => $this->available,
+            'main_page'=> $this->main_page
         ];
     }
 }

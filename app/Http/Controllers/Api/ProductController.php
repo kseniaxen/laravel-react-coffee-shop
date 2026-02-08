@@ -9,13 +9,12 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductResource;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Product::query()->orderBy('id', 'desc');
+        $query = Product::with(['category', 'size'])->orderBy('id', 'desc');
 
         if ($request->has('category') && $request->category) {
             $category = Category::where('name', 'ilike', $request->category)->first();
@@ -28,6 +27,15 @@ class ProductController extends Controller
         }
 
         return ProductResource::collection($query->paginate(10));
+    }
+
+    public function mainPageProducts()
+    {
+        $products = Product::with(['category', 'size'])
+            ->where('main_page', true)
+            ->orderBy('id', 'desc')
+            ->get();
+        return ProductResource::collection($products);
     }
 
     public function store(StoreProductRequest $request) {}

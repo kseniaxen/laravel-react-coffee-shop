@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('size_id')->constrained('size_products')->onDelete('cascade');
             $table->longText('image')->nullable();
             $table->boolean('available')->default(true);
+            $table->boolean('main_page')->default(false);
             $table->timestamps();
         });
     }

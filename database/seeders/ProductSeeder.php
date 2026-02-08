@@ -18,6 +18,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 1,
                 'image' => '',
                 'available' => true,
+                'main_page' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -29,6 +30,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 1,
                 'image' => '',
                 'available' => true,
+                'main_page' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -40,6 +42,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 1,
                 'image' => '',
                 'available' => true,
+                'main_page' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -51,6 +54,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 1,
                 'image' => '',
                 'available' => true,
+                'main_page' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -62,10 +66,46 @@ class ProductSeeder extends Seeder
                 'category_id' => 1,
                 'image' => '',
                 'available' => true,
+                'main_page' => true,
                 'created_at' => now(),
                 'updated_at' => now()
-            ]
+            ],
+            [
+                'name' => 'Croissant',
+                'description' => 'Flaky pastry with butter filling.',
+                'base_price' => 300.00,
+                'size_id' => 4,
+                'category_id' => 2,
+                'image' => '',
+                'available' => true,
+                'main_page' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Chocolate Chip Cookie',
+                'description' => 'Homemade cookie with chocolate chunks.',
+                'base_price' => 250.00,
+                'size_id' => 4,
+                'category_id' => 2,
+                'image' => '',
+                'available' => true,
+                'main_page' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Cinnamon Roll',
+                'description' => 'Fresh bun with cinnamon and sugar glaze.',
+                'base_price' => 350.00,
+                'size_id' => 4,
+                'category_id' => 2,
+                'image' => '',
+                'available' => true,
+                'main_page' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
-
     }
 }

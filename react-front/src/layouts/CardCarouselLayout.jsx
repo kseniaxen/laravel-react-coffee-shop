@@ -2,17 +2,7 @@ import { Carousel } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import CardLayout from "./CardLayout";
 
-export default function CardCarouselLayout() {
-    const cards = [1, 2, 3, 4, 5];
-
-    function chunkArray(array, size) {
-        const result = [];
-        for (let i = 0; i < array.length; i += size) {
-            result.push(array.slice(i, i + size));
-        }
-        return result;
-    }
-
+export default function CardCarouselLayout({ products = [] }) {
     const [cardsPerSlide, setCardsPerSlide] = useState(4);
 
     useEffect(() => {
@@ -29,7 +19,24 @@ export default function CardCarouselLayout() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    const slides = chunkArray(cards, cardsPerSlide);
+    function chunkArray(array, size) {
+        const result = [];
+        for (let i = 0; i < array.length; i += size) {
+            result.push(array.slice(i, i + size));
+        }
+        return result;
+    }
+
+    const slides = chunkArray(products, cardsPerSlide);
+
+    if (products.length === 0) {
+        return (
+            <div className="text-center p-4">
+                <p>Нет товаров для отображения</p>
+            </div>
+        );
+    }
+
     return (
         <Carousel
             indicators={false}
@@ -47,12 +54,20 @@ export default function CardCarouselLayout() {
             {slides.map((slide, index) => (
                 <Carousel.Item key={index}>
                     <div className="d-flex justify-content-center gap-4">
-                        {slide.map((card, i) => (
-                            <CardLayout key={i} />
+                        {slide.map((product) => (
+                            <CardLayout
+                                key={product.id}
+                                name={product.name}
+                                text={product.description}
+                                size_product={product.size?.size_product}
+                                size_name={product.size?.name}
+                                dimensions={product.size?.dimensions}
+                                price={product.base_price}
+                            />
                         ))}
                     </div>
                 </Carousel.Item>
             ))}
         </Carousel>
-    )
+    );
 }

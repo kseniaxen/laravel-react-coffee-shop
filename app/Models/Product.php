@@ -13,7 +13,8 @@ class Product extends Model
         'category_id',
         'size_id',
         'image',
-        'available'
+        'available',
+        'main_page'
     ];
 
     public function size()

@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
                 'name' => 'coffee'
             ],
             [
-                'name' => 'bakery'
+                'name' => 'dessert'
             ]
         ]);
     }

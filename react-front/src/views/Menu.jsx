@@ -15,6 +15,7 @@ export default function Menu() {
 
     const getProducts = () => {
         setLoading(true);
+        setProducts([]);
 
         axiosClient
             .get(`/products?category=${category}`)
@@ -27,7 +28,7 @@ export default function Menu() {
     };
 
     return (
-        <div className="mt-4" style={{ minHeight: '60vh' }}>
+        <div className="my-4" style={{ minHeight: '60vh' }}>
             {loading &&
                 <div className="d-flex justify-content-center align-items-center">
                     <Spinner animation="border" role="status">

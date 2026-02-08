@@ -19,7 +19,7 @@ export default function FooterLayout() {
                                 <Link to="/coffee" className="text-decoration-none font-poppins" style={{color: "white"}}>Coffee</Link>
                             </li>
                             <li className="mb-3">
-                                <Link to="/bakery" className="text-decoration-none font-poppins" style={{color: "white"}}>Bakery</Link>
+                                <Link to="/dessert" className="text-decoration-none font-poppins" style={{color: "white"}}>Bakery</Link>
                             </li>
                             <li className="mb-3">
                                 <Link to="/login" className="text-decoration-none font-poppins" style={{color: "white"}}>Login</Link>
